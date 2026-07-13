@@ -287,10 +287,10 @@ a { color: inherit; }
 
 .hero {
   position: relative;
-  min-height: 82vh;
+  min-height: 74vh;
   display: flex;
   align-items: center;
-  padding: 130px 0 68px;
+  padding: 120px 0 60px;
   overflow: hidden;
 }
 
@@ -332,8 +332,7 @@ a { color: inherit; }
 
 /* ---------- Section rhythm ---------- */
 
-.manifesto { padding: clamp(56px, 8vw, 92px) 0 clamp(48px, 6vw, 76px); position: relative; z-index: var(--z-content); }
-.services { padding: 0 0 clamp(48px, 6vw, 76px); position: relative; z-index: var(--z-content); }
+.services { padding: clamp(26px, 4vw, 52px) 0 clamp(48px, 6vw, 76px); position: relative; z-index: var(--z-content); }
 .work { padding: clamp(44px, 6vw, 68px) 0; position: relative; z-index: var(--z-content); }
 .about { padding: clamp(52px, 7vw, 88px) 0; position: relative; z-index: var(--z-content); }
 .contact { padding: clamp(52px, 7vw, 84px) 0 clamp(56px, 8vw, 96px); position: relative; z-index: var(--z-content); }
@@ -341,15 +340,9 @@ a { color: inherit; }
 .section-head { max-width: 34ch; margin-bottom: clamp(26px, 3.2vw, 42px); }
 .section-head p { margin-top: 14px; color: var(--ink-mute); font-size: var(--text-lead); line-height: 1.5; }
 
-/* ---------- Manifesto ---------- */
+/* ---------- Pull quote (leads the About section) ---------- */
 
-.manifesto .wrap {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(32px, 5vw, 76px);
-  align-items: start;
-}
-.pull-quote { max-width: 24ch; margin: 0; }
+.pull-quote { max-width: 32ch; margin: 0; }
 .pull-quote p {
   font-family: var(--font-display);
   font-weight: 500;
@@ -357,7 +350,6 @@ a { color: inherit; }
   line-height: 1.22;
   letter-spacing: -0.015em;
   color: var(--ink);
-  max-width: 32ch;
 }
 .pull-quote cite {
   display: block;
@@ -369,9 +361,13 @@ a { color: inherit; }
 }
 .pull-quote cite::before { content: ''; display: inline-block; width: 26px; height: 1px; background: var(--ink-mute); vertical-align: middle; margin-right: 12px; }
 
-.manifesto-body { max-width: 54ch; margin: 6px 0 0; }
-.manifesto-body p { font-size: var(--text-body); line-height: 1.65; color: var(--ink-body); }
-.manifesto-body p + p { margin-top: 18px; }
+.about-quote {
+  max-width: 34ch;
+  margin: 0 0 clamp(26px, 3vw, 38px);
+  padding-bottom: clamp(22px, 2.8vw, 32px);
+  border-bottom: 1px solid var(--line);
+}
+.about-quote p { font-size: clamp(1.45rem, 2.6vw, 2rem); }
 
 /* ---------- Services as editorial rows (not identical cards) ---------- */
 
@@ -614,8 +610,6 @@ body.js .reveal.visible { opacity: 1; transform: none; }
   .hero-content .display, .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-sub { font-size: var(--text-body); }
 
-  .manifesto .wrap { grid-template-columns: 1fr; gap: 24px; }
-  .pull-quote { max-width: 30ch; }
 
   .work-list { grid-template-columns: 1fr; }
   .work-list li { flex-direction: column; gap: 10px; }

@@ -78,7 +78,7 @@
   function buildVine() {
     if (!svg || !stem || !leafGroup) return;
 
-    var startEl = document.getElementById('approach');
+    var startEl = document.getElementById('services');
     var endEl = document.getElementById('contact');
     if (!startEl || !endEl) return;
 
