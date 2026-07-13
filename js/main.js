@@ -51,6 +51,15 @@
       });
     }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
+    // Failsafe: content must never stay hidden if the observer doesn't fire
+    // (backgrounded tab, prerender, headless render). Reveal any stragglers.
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        reveals.forEach(function (el) {
+          if (!el.classList.contains('visible')) el.classList.add('visible');
+        });
+      }, 2500);
+    });
   } else {
     reveals.forEach(function (el) { el.classList.add('visible'); });
   }
@@ -80,15 +89,15 @@
     if (vh < 200) return;
 
     // The vine lives in the left gutter, gently meandering.
-    var x = Math.max(18, Math.min(window.innerWidth * 0.045, 64));
-    var amp = Math.max(10, Math.min(window.innerWidth * 0.02, 26));
+    var x = Math.max(20, Math.min(window.innerWidth * 0.045, 66));
+    var amp = Math.max(18, Math.min(window.innerWidth * 0.03, 44));
 
     svg.setAttribute('width', window.innerWidth);
     svg.setAttribute('height', docH);
     svg.setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' + docH);
 
     // Build a smooth meander using cubic segments.
-    var segs = Math.max(6, Math.round(vh / 320));
+    var segs = Math.max(4, Math.round(vh / 620));
     var step = vh / segs;
     var d = 'M ' + x + ' ' + startY;
     for (var i = 0; i < segs; i++) {
@@ -112,12 +121,17 @@
       var pt = stem.getPointAtLength(len * t);
       var side = n % 2 === 0 ? 1 : -1;
       var lx = pt.x, ly = pt.y;
-      var ex = lx + 30 * side, ey = ly - 18;
+      var ex = lx + 40 * side, ey = ly - 30; // leaf tip, angled up and out
+      // Almond leaf: two quadratics bulging out perpendicular to the base->tip axis.
+      var dx = ex - lx, dy = ey - ly;
+      var L = Math.hypot(dx, dy) || 1;
+      var px = -dy / L, py = dx / L;  // perpendicular unit
+      var w = 22;                      // leaf half-width
+      var mx = (lx + ex) / 2, my = (ly + ey) / 2;
       var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      // a small leaf: a curved almond shape off the stem
       var dd = 'M ' + lx + ' ' + ly +
-        ' C ' + (lx + 12 * side) + ' ' + (ly - 4) + ', ' + (ex - 8 * side) + ' ' + (ey + 8) + ', ' + ex + ' ' + ey +
-        ' C ' + (ex - 4 * side) + ' ' + (ey + 14) + ', ' + (lx + 16 * side) + ' ' + (ly + 8) + ', ' + lx + ' ' + ly + ' Z';
+        ' Q ' + (mx + px * w) + ' ' + (my + py * w) + ' ' + ex + ' ' + ey +
+        ' Q ' + (mx - px * w) + ' ' + (my - py * w) + ' ' + lx + ' ' + ly + ' Z';
       path.setAttribute('d', dd);
       leafGroup.appendChild(path);
       leaves.push({ el: path, at: t });

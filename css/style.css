@@ -4,7 +4,7 @@
 :root {
   /* ---- Colour: one green plus a green-tinted neutral ramp ---- */
   --leaf: #adb52e;          /* the single accent, from the logo */
-  --leaf-deep: #7f861f;     /* darker green, for links/hover on light — passes contrast for large text */
+  --leaf-deep: #5f6417;     /* darker green for text/links on light — AA (5.6:1 on paper) */
 
   --paper: #f4f2ea;         /* warm off white body */
   --paper-2: #ece9df;       /* slightly deeper panel */
@@ -70,6 +70,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  position: relative; /* positioning context so the full-height vine isn't clipped to the viewport */
 }
 
 img { max-width: 100%; display: block; }
@@ -175,13 +176,10 @@ a { color: inherit; }
 .vine-leaves path {
   fill: var(--leaf);
   opacity: 0;
-  transform: scale(0.4);
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: opacity 0.6s var(--ease-out), transform 0.7s var(--ease-out);
+  transition: opacity 0.7s var(--ease-out);
 }
 
-.vine-leaves path.sprouted { opacity: 0.85; transform: scale(1); }
+.vine-leaves path.sprouted { opacity: 0.9; }
 
 /* ---------- Buttons ---------- */
 
@@ -295,6 +293,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   isolation: isolate;
+  overflow: hidden;
   background: var(--forest);
 }
 
@@ -370,15 +369,15 @@ a { color: inherit; }
 
 /* ---------- Manifesto ---------- */
 
-.pull-quote { max-width: 20ch; margin: 0 0 clamp(44px, 6vw, 72px); }
+.pull-quote { max-width: 40ch; margin: 0 0 clamp(44px, 6vw, 72px); }
 .pull-quote p {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(1.7rem, 3.8vw, 2.7rem);
-  line-height: 1.16;
+  line-height: 1.18;
   letter-spacing: -0.015em;
   color: var(--ink);
-  max-width: 24ch;
+  max-width: 32ch;
 }
 .pull-quote cite {
   display: block;
@@ -485,7 +484,7 @@ a { color: inherit; }
 /* ---------- About ---------- */
 
 .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(36px, 6vw, 72px); align-items: center; }
-.about-photo { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); }
+.about-photo { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); aspect-ratio: 4 / 5; background: var(--paper-2); }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92) contrast(1.02); }
 .about-body h2 { margin-bottom: 24px; }
 .about-body p { color: var(--ink-mute); font-size: var(--text-body); }
@@ -606,6 +605,7 @@ body.js .reveal.visible { opacity: 1; transform: none; }
 }
 
 @media (max-width: 720px) {
+  .vine-wrap { display: none; } /* gutter is too thin for the vine on phones */
   .nav-toggle { display: flex; }
   .nav-links {
     display: none;
