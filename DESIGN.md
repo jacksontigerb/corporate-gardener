@@ -72,7 +72,10 @@ Hand rolled in vanilla JS (`js/main.js`), no motion library, for speed and robus
   the muted palette. On theme (a greenhouse) and atmospheric.
 - **CTA band:** no photo. A hand drawn botanical SVG line on the forest panel, which is
   more distinctive and needs no asset.
-- **About:** `assets/nic.jpg`, the real photo of Nic, lightly graded to match.
+- **About:** `assets/nic.jpg`, the real photo of Nic, lightly graded to match. Below it,
+  `assets/nic-tri.jpg`, a candid of Nic in Berkshire Tri Squad kit (cropped from a wider
+  race day shot), shown landscape at 5 / 4 with a short caption tying into the sport
+  paragraph.
 - Swapping the hero for commissioned or generated **painterly garden art** later is a one
   line change to `.hero-media` in the CSS. Keep roughly the same wide, low light, muted
   look.
