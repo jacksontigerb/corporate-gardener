@@ -600,7 +600,8 @@ a { color: inherit; }
 .about-body h2 { margin-bottom: 24px; }
 .about-body p { color: var(--ink-mute); font-size: var(--text-body); }
 .about-body p + p { margin-top: 18px; }
-.about-body .text-link { display: inline-block; margin-top: 28px; }
+.about-body > .text-link { display: inline-block; margin-top: 28px; }
+.about-body p .text-link { font-size: inherit; font-weight: 500; }
 
 /* ---------- CTA band ---------- */
 
