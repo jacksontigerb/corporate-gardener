@@ -78,8 +78,8 @@
   function buildVine() {
     if (!svg || !stem || !leafGroup) return;
 
-    var startEl = document.getElementById('services');
-    var endEl = document.getElementById('contact');
+    var startEl = document.querySelector('[data-vine-start]') || document.getElementById('services');
+    var endEl = document.querySelector('[data-vine-end]') || document.getElementById('contact');
     if (!startEl || !endEl) return;
 
     var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);

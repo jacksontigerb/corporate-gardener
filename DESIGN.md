@@ -89,16 +89,23 @@ Hand rolled in vanilla JS (`js/main.js`), no motion library, for speed and robus
 - Visible `:focus-visible` rings, a skip link, labelled form fields, `aria-live` status
   on the form, reduced motion honoured throughout.
 
+## Multi page structure (added July 2026)
+
+The site is now five pages (Home, What I do, How I work, About, Contact) sharing the
+same stylesheet and script. Inner pages use the `.page-head`, `.page-section`, `.split`,
+`.plain-list`, `.vignette`, `.beliefs` and `.steps` patterns. The growing line reads its
+anchors from `data-vine-start` / `data-vine-end` on sections, so each page controls its
+own vine; the contact page deliberately has none.
+
 ## Go live checklist
 
-1. **Phone number** — replace `[PHONE]` / `tel:PHONE-GOES-HERE` in `index.html` with the
-   real number, or delete that `<li>`.
-2. **Copy sign off** — Nic confirms every client name and figure.
-3. **Deploy** — connect the repo to Netlify (or drag the folder in). `netlify.toml`
+1. **Copy sign off** — Nic confirms every client name and figure, the "25+ years"
+   number, both ship examples, and the personal detail on the About page.
+2. **Deploy** — connect the repo to Netlify (or drag the folder in). `netlify.toml`
    publishes the folder as is; the contact form is wired to **Netlify Forms**
    (`data-netlify="true"`) so enquiries appear in the Netlify dashboard and by email with
    no backend. If a different host is preferred, switch the form to Formspree instead.
-4. **Domain** — point `corporategardener.co.uk` DNS at the host. SSL is issued
+3. **Domain** — point `corporategardener.co.uk` DNS at the host. SSL is issued
    automatically, which also fixes the broken certificate on the old site.
-5. **Post launch** — set a notification email on the Netlify form, and submit the sitemap
+4. **Post launch** — set a notification email on the Netlify form, and submit the sitemap
    in Google Search Console.

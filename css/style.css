@@ -262,6 +262,12 @@ a { color: inherit; }
 
 .nav-cta { margin-left: 10px; }
 
+.nav-links a[aria-current="page"]:not(.btn) {
+  background: rgba(173, 181, 46, 0.18);
+  font-weight: 600;
+}
+.nav-links a[aria-current="page"]:not(.btn):hover { opacity: 1; }
+
 .site-nav.scrolled {
   background: rgba(244, 242, 234, 0.86);
   backdrop-filter: saturate(1.4) blur(10px);
@@ -328,6 +334,120 @@ a { color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-logo, .hero-content { animation: none; }
+}
+
+/* ---------- Inner page header (the tabs beyond Home) ---------- */
+
+.page-head {
+  padding: clamp(128px, 16vw, 168px) 0 clamp(20px, 3vw, 36px);
+  position: relative;
+  z-index: var(--z-content);
+}
+.page-head h1 {
+  font-size: var(--text-display-sm);
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+}
+.page-head .page-lead {
+  margin-top: 20px;
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--ink-mute);
+  max-width: 56ch;
+}
+
+/* ---------- Generic inner-page section rhythm ---------- */
+
+.page-section { padding: clamp(36px, 5vw, 60px) 0; position: relative; z-index: var(--z-content); }
+.page-section + .page-section { border-top: 1px solid var(--line); }
+
+/* ---------- Plain ruled list (leaf tick marks) ---------- */
+
+.plain-list { list-style: none; max-width: 62ch; }
+.plain-list li {
+  position: relative;
+  padding: 14px 0 14px 30px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+.plain-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 1.45em;
+  width: 14px; height: 2px;
+  background: var(--leaf);
+  border-radius: 2px;
+}
+.plain-list li strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Example vignette card ---------- */
+
+.vignette {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 3.4vw, 40px);
+  max-width: 66ch;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+.vignette .eyebrow { margin-bottom: 12px; }
+.vignette p { color: var(--ink-body); line-height: 1.6; }
+.vignette p + p { margin-top: 12px; }
+
+/* ---------- Belief statements (How I work) ---------- */
+
+.beliefs { list-style: none; display: grid; gap: clamp(20px, 3vw, 30px); max-width: 44ch; }
+.beliefs li {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  padding-left: 22px;
+  border-left: 2px solid var(--leaf);
+}
+
+/* ---------- Numbered steps (How we start) ---------- */
+
+.steps-title { margin-top: 40px; font-size: var(--text-h3); }
+.steps { list-style: none; counter-reset: step; display: grid; gap: 18px; margin-top: 24px; }
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 2px 0 2px 52px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--ink);
+  border: 1px solid var(--leaf);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+}
+.steps li strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Two column split used on inner pages ---------- */
+
+.split { display: grid; grid-template-columns: 4fr 7fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.split > .split-head h2 { margin-bottom: 14px; }
+.split > .split-head p { color: var(--ink-mute); font-size: var(--text-lead); line-height: 1.5; }
+
+.split-body > p { color: var(--ink-mute); max-width: 62ch; margin-bottom: 14px; line-height: 1.6; }
+.split-body h3 { margin: 36px 0 8px; }
+.split-body h3:first-child { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; gap: 24px; }
 }
 
 /* ---------- Section rhythm ---------- */
@@ -405,6 +525,7 @@ a { color: inherit; }
 .service-text { max-width: 60ch; }
 .service-text h3 { margin-bottom: 12px; }
 .service-text p { color: var(--ink-mute); font-size: var(--text-lead); line-height: 1.55; }
+.service-text .text-link { display: inline-block; margin-top: 18px; }
 
 @media (min-width: 720px) {
   /* alternate the emphasis so the three rows don't read as a stamped grid */
