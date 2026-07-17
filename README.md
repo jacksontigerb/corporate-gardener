@@ -56,7 +56,8 @@ on Netlify; locally it will show its "please email me" fallback, which is expect
 
 - One accent only: the brand green `--leaf` (#adb52e) at the top of `css/style.css`. The
   design works because there is a single green; keep it that way.
-- Fonts are Spectral (headings) and Hanken Grotesk (body), loaded from Google Fonts.
+- Fonts are Fraunces (headings, soft axis for an organic feel) and Hanken Grotesk
+  (body), loaded from Google Fonts.
 - The hero uses a real greenhouse photo, graded to fit the muted palette. It can be
   swapped for painterly garden art later by changing `.hero-media` in the CSS.
 

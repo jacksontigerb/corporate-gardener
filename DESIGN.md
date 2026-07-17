@@ -35,9 +35,9 @@ as one warm, slightly green family rather than pure grey.
 Two families on a real contrast axis (serif + sans), both from Google Fonts, loaded via
 CDN so there is no build step.
 
-- **Display / headings — Young Serif.** Earthy, rooted, warm; on theme for a gardener
-  and nothing like the reflex display serifs. One weight (400); hierarchy comes from
-  size. Used for h1, h2, h3, the pull quote and the credential numerals.
+- **Display / headings — Fraunces** (400–600, `SOFT` axis at 80). A soft, organic serif
+  that suits the gardening idea while staying professional. Used for h1, h2, h3, the
+  pull quote and the credential numerals. (Was Spectral, before that Young Serif.)
 - **Body / UI — Hanken Grotesk** (400 / 500 / 600 / 700). Clean, warm humanist sans.
 
 Scale is fluid `clamp()`. Display letter spacing is floored at about -0.02em. Headings
@@ -70,8 +70,9 @@ Hand rolled in vanilla JS (`js/main.js`), no motion library, for speed and robus
 - **Hero:** `assets/hero.jpg`, a real greenhouse at golden hour, graded
   (`saturate 0.82`, slightly darkened) and covered by a green black scrim so it sits in
   the muted palette. On theme (a greenhouse) and atmospheric.
-- **CTA band:** no photo. A hand drawn botanical SVG line on the forest panel, which is
-  more distinctive and needs no asset.
+- **CTA bands were removed July 2026** (Nic found them repetitive with the nav's Get in
+  touch button). The botanical SVG lives only in git history now; the footer carries the
+  closing contact link.
 - **About:** `assets/nic-tri.jpg`, a candid of Nic in Berkshire Tri Squad kit, cropped to
   4 / 5 from a wider race day shot. Personal on purpose; it pairs with the "I started in
   sport" opening and the sport paragraph.
